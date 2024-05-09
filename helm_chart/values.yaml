@@ -37,7 +37,6 @@ services:
 nginx:
   image: nginx
   tag: latest
-  tag: latest
   port: 80
   nport: 30742
   
