@@ -107,7 +107,7 @@ server {
         proxy_set_header X-Forwarded-Prefix /myinfo;
         proxy_set_header X-Forwarded-Uri $uri;
     }
-}
+  }
 ---
 apiVersion: v1
 kind: ConfigMap
