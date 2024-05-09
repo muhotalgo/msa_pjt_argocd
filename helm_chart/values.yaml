@@ -32,8 +32,10 @@ services:
     tag: latest
     port: 8030
     nport: 32324
-
     
 nginx:
   image: nginx
   tag: latest
+  port: 80
+  nport:32320
+  
