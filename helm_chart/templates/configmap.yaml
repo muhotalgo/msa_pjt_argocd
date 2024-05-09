@@ -5,23 +5,16 @@ metadata:
 data:
   default.conf: |
     # Nginx configuration for reverse proxy
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: nginx-config
-data:
-  default.conf: |
-    # Nginx configuration for reverse proxy
-server {
-    listen 80;
-    server_name abc123.com;
+    server {
+      listen 80;
+      server_name abc123.com;
 
-    location / {
+      location / {
         root /usr/share/nginx/html;
         index index.html index.html;
-    }
+      }
 
-    location /index {
+      location /index {
         proxy_pass http://frontendapp-service:3000/login.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -30,9 +23,9 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /index;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
+      }
 
-    location /coupon {
+      location /coupon {
         proxy_pass http://couponapp-service:8040/coupon_log.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -41,8 +34,8 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /coupon;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
-    location /sum {
+      }
+      location /sum {
         proxy_pass http://couponapp-service:8040/coupon_sum.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -51,9 +44,9 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /coupon;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
+      }
 
-    location /select {
+      location /select {
         proxy_pass http://couponapp-service:8040/select_cars.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -62,9 +55,9 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /coupon;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
+      }
 
-    location /discount {
+      location /discount {
         proxy_pass http://discountapp-service:8050/discount.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -73,10 +66,10 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /discount;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
+      }
 
 
-    location /login {
+      location /login {
         proxy_pass http://memberapp-service:8030/login.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -85,9 +78,9 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /member;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
+      }
 
-    location /register {
+      location /register {
         proxy_pass http://memberapp-service:8030/register.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -96,8 +89,8 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /register;
         proxy_set_header X-Forwarded-Uri $uri;
-    }
-    location /myinfo {
+      }
+      location /myinfo {
         proxy_pass http://memberapp-service:8030/myinfo.html/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -106,8 +99,8 @@ server {
         proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Forwarded-Prefix /myinfo;
         proxy_set_header X-Forwarded-Uri $uri;
+      }
     }
-  }
 ---
 apiVersion: v1
 kind: ConfigMap
