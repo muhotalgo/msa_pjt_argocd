@@ -14,40 +14,20 @@ data:
         index index.html index.html;
       }
 
-      location /index {
-        proxy_pass http://frontendapp-service:3000/login.html/;
+      location /login {
+        proxy_pass http://frontendapp-service:3000/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /index;
+        proxy_set_header X-Forwarded-Prefix /login;
         proxy_set_header X-Forwarded-Uri $uri;
       }
+
 
       location /coupon {
-        proxy_pass http://couponapp-service:8040/coupon_log.html/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /coupon;
-        proxy_set_header X-Forwarded-Uri $uri;
-      }
-      location /sum {
-        proxy_pass http://couponapp-service:8040/coupon_sum.html/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /coupon;
-        proxy_set_header X-Forwarded-Uri $uri;
-      }
-
-      location /select {
-        proxy_pass http://couponapp-service:8040/select_cars.html/;
+        proxy_pass http://couponapp-service:8040/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -58,7 +38,7 @@ data:
       }
 
       location /discount {
-        proxy_pass http://discountapp-service:8050/discount.html/;
+        proxy_pass http://discountapp-service:8050/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -69,8 +49,8 @@ data:
       }
 
 
-      location /login {
-        proxy_pass http://memberapp-service:8030/login.html/;
+      location /member {
+        proxy_pass http://memberapp-service:8030/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -80,26 +60,17 @@ data:
         proxy_set_header X-Forwarded-Uri $uri;
       }
 
-      location /register {
-        proxy_pass http://memberapp-service:8030/register.html/;
+      
+      location /js {
+        proxy_pass http://frontendapp-service:3000/js/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /register;
+        proxy_set_header X-Forwarded-Prefix /login;
         proxy_set_header X-Forwarded-Uri $uri;
-      }
-      location /myinfo {
-        proxy_pass http://memberapp-service:8030/myinfo.html/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /myinfo;
-        proxy_set_header X-Forwarded-Uri $uri;
-      }
+      } 
     }
 ---
 apiVersion: v1
