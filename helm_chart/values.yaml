@@ -39,5 +39,5 @@ nginx:
   tag: latest
   tag: latest
   port: 80
-  nport:30742
+  nport: 30742
   
