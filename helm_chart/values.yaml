@@ -24,14 +24,14 @@ services:
     image: "seokhyeonk/discountapp" # Replace with your actual image name
     tag: latest
     port: 8050
-    nport: 32323    
+    nport: 32323   
 
   memberapp:
     name: memberapp  
     image: "seokhyeonk/memberapp" # Replace with your actual image name
     tag: latest
     port: 8030
-    port: 32324
+    nport: 32324
 
     
 nginx:
