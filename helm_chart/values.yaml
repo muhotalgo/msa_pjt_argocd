@@ -37,5 +37,5 @@ nginx:
   image: nginx
   tag: latest
   port: 80
-  nport:32320
+  nport:30742
   
