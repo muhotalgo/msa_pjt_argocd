@@ -16,21 +16,24 @@ services:
     name: couponapp  
     image: "seokhyeonk/couponapp" # Replace with your actual image name
     tag: latest
-    port: 8050
+    port: 8040
     nport: 32322
 
   discountapp:
     name: discountapp  
     image: "seokhyeonk/discountapp" # Replace with your actual image name
     tag: latest
-    port: 8010
+    port: 8050
     nport: 32323    
 
-  build:
+  memberapp:
     name: memberapp  
     image: "seokhyeonk/memberapp" # Replace with your actual image name
     tag: latest
-    port: 8010
+    port: 8030
+    port: 32324
+
+    
 nginx:
   image: nginx
   tag: latest
