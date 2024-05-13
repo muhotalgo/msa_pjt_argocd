@@ -14,14 +14,14 @@ data:
         index index.html index.html;
       }
 
-      location /login {
+      location /main {
         proxy_pass http://frontendapp-service:3000/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /login;
+        proxy_set_header X-Forwarded-Prefix /main;
         proxy_set_header X-Forwarded-Uri $uri;
       }
 
@@ -68,7 +68,7 @@ data:
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-Prefix /login;
+        proxy_set_header X-Forwarded-Prefix /main;
         proxy_set_header X-Forwarded-Uri $uri;
       } 
     }
